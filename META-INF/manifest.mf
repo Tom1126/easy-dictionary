@@ -1,0 +1,47 @@
+Manifest-Version: 1.0
+
+Name: dictionary.js
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: 4JY8WAyq4mWvliQtq8Fewi0DO0c=
+SHA256-Digest: 42qP5UwG05sSZ2LIDpvFzSjzIM9g4wLZBci9KVg1S2o=
+
+Name: README.md
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: z4jP5jff90I2+GVpe21xbJihjKM=
+SHA256-Digest: lzP89VVpdk8Nns7cWJIW2+z0rhPAvwIN82Kq3i0jDZU=
+
+Name: LICENSE
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: hiS82uVbru8AzRHV38+mD2hxCgI=
+SHA256-Digest: jOtLnuWt7d5Hsx6XXB2QxzrSe2sWWh3NgMfFRetluQM=
+
+Name: manifest.json
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: j34FzjEgjfvYGyjIZL4wP/DjEEc=
+SHA256-Digest: MBAoxJ07mQpvxq3697ay1T0sSU9c+kqkb7b4+ldQdbw=
+
+Name: icons/Dictionary-64.png
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: 9JG24SR5piBR4uJIahZhJGEue1M=
+SHA256-Digest: L//QCpbFJQnl0D+KhlRyUtzbi4xzE+MdPTNMsVIehnQ=
+
+Name: icons/Dictionary-48.png
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: YMJiorYfGzTN+k2RQn3kpVQ8Cwk=
+SHA256-Digest: 61Si2FupcQXNZcLRURSY5AKaseFHJSIpcI76aWIAvgY=
+
+Name: icons/Dictionary-96.png
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: Ovc8PVe6c7cQJilWyOkqxJEkyIw=
+SHA256-Digest: LYMLtr6AVLtzYT1LuW+alUGEDMCO0F/6+DaG0TfHw0Q=
+
+Name: META-INF/cose.manifest
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: EwJ8gUGOFgHu5RcVgyX2Y/wyPT0=
+SHA256-Digest: ZBXHbttizYXf7SuHhBZAJpL0movEUOUHhvrjrZ/2NZ8=
+
+Name: META-INF/cose.sig
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: GovUochOSueSmAS1t2uV95pf5nc=
+SHA256-Digest: BnnNEFJf7dkFHOAWz5SzF3ysXRuAwDeSGtVmB+WsYeQ=
+
