@@ -1,3 +1,4 @@
+
 document.addEventListener('dblclick', showMeaning);
 document.addEventListener('click', removeMeaning);
 
@@ -158,6 +159,11 @@ function createDiv(info) {
     style.textContent = ".mwe-popups{background:#fff;position:absolute;z-index:110;-webkit-box-shadow:0 30px 90px -20px rgba(0,0,0,0.3),0 0 1px #a2a9b1;box-shadow:0 30px 90px -20px rgba(0,0,0,0.3),0 0 1px #a2a9b1;padding:0;font-size:14px;min-width:300px;border-radius:2px}.mwe-popups.mwe-popups-is-not-tall{width:320px}.mwe-popups .mwe-popups-container{color:#222;margin-top:-9px;padding-top:9px;text-decoration:none}.mwe-popups.mwe-popups-is-not-tall .mwe-popups-extract{min-height:40px;max-height:140px;overflow:hidden;margin-bottom:47px;padding-bottom:0}.mwe-popups .mwe-popups-extract{margin:16px;display:block;color:#222;text-decoration:none;position:relative} .mwe-popups.flipped_y:before{content:'';position:absolute;border:8px solid transparent;border-bottom:0;border-top: 8px solid #a2a9b1;bottom:-8px;left:10px}.mwe-popups.flipped_y:after{content:'';position:absolute;border:11px solid transparent;border-bottom:0;border-top:11px solid #fff;bottom:-7px;left:7px} .mwe-popups.mwe-popups-no-image-tri:before{content:'';position:absolute;border:8px solid transparent;border-top:0;border-bottom: 8px solid #a2a9b1;top:-8px;left:10px}.mwe-popups.mwe-popups-no-image-tri:after{content:'';position:absolute;border:11px solid transparent;border-top:0;border-bottom:11px solid #fff;top:-7px;left:7px} .audio{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAcUlEQVQ4y2P4//8/AyUYQhAH3gNxA7IAIQPmo/H3g/QA8XkgFiBkwHyoYnRQABVfj88AmGZcTuuHyjlgMwBZM7IE3NlQGhQe65EN+I8Dw8MLGgYoFpFqADK/YUAMwOsFigORatFIlYRElaRMWmaiBAMAp0n+3U0kqkAAAAAASUVORK5CYII=);background-position: center;background-repeat: no-repeat;cursor:pointer;margin-left: 8px;opacity: 0.5; width: 16px; display: inline-block;} .audio:hover {opacity: 1;}";
     shadow.appendChild(style);
 
+    //style for link, others
+    var style2 = document.createElement("style");
+    style2.textContent = '.link-other:hover{text-shadow: none !important; }.link-other:before{content: ""; position: absolute; width:13%; height:2px; background-color: #000; visibility: hidden; -webkit-transform: scaleX(0); -webkit-transition: all 0.3s ease-in-out 0s; transition: all 0.3s ease-in-out 0s; margin-top: 20px;} .link-other:hover:before{visibility: visible; -webkit-transform: scaleX(1); transform: scaleX(1);}'
+    shadow.appendChild(style2);
+
     var encapsulateDiv = document.createElement("div");
     encapsulateDiv.style = "all: initial; text-shadow: transparent 0px 0px 0px, rgba(0,0,0,1) 0px 0px 0px !important;";
     shadow.appendChild(encapsulateDiv);
@@ -177,7 +183,6 @@ function createDiv(info) {
     content.style = "line-height: 1.4; margin-top: 0px; margin-bottom: 11px; max-height: none";
     contentContainer.appendChild(content);
 
-
     var heading = document.createElement("h3");
     heading.style = "margin-block-end: 0px; display:inline-block;";
     heading.textContent = "Searching";
@@ -192,26 +197,37 @@ function createDiv(info) {
     audio.style.display = "none";
 
     var moreInfo = document.createElement("a");
+    moreInfo.className = "link-other"
     moreInfo.href = "https://www.google.com/search?q=define+" + info.word;
-    moreInfo.style = "float: right; text-decoration: none;"
+    moreInfo.style = "float: right; text-decoration: none; margin: 14px 0; font-size: 12px; background: #f0f0f0; padding: 5px; border-radius: 7px;"
     moreInfo.target = "_blank";
 
-    const synonymnsHeader = document.createElement('h3')
-    synonymnsHeader.style = "margin-block-end: 0px; display:inline-block;";
+    //div for css design
+    var synoWrapper = document.createElement("div");
+    synoWrapper.id = "syno-wrapper";
+    synoWrapper.className = "syno-wrapper"
+    synoWrapper.style = "background: #f0f0f0; border-radius: 7px;"
+
+    const synonymnsHeader = document.createElement('p')
+    synonymnsHeader.id = "syno-header";
+    synonymnsHeader.style = "padding-left: 5px; margin-block-end: 0px; display:inline-block; font-weight: bold;";
     synonymnsHeader.textContent = "Synonymns";
 
     const lineBreak = document.createElement("br")
+
     const thesaurusTest = document.createElement('p')
     thesaurusTest.textContent = "Synonymns searching..."
+    thesaurusTest.id = "thesau-content"
+    thesaurusTest.style = "padding: 10px 5px; font-size: 12px; margin: 0;";
     
     content.appendChild(heading);
+    content.appendChild(moreInfo);
     content.appendChild(audio);
     content.appendChild(meaning);
-    content.appendChild(moreInfo);
-    content.appendChild(lineBreak);
-    content.appendChild(synonymnsHeader);
-    content.appendChild(lineBreak);
-    content.appendChild(thesaurusTest);
+    content.appendChild(synoWrapper);
+    synoWrapper.appendChild(synonymnsHeader);
+    synoWrapper.appendChild(thesaurusTest);
+
     document.body.appendChild(hostDiv);
 
     if (info.clientY < window.innerHeight / 2) {
@@ -279,6 +295,7 @@ function appendToDiv(createdDiv, content) {
             sound.play();
         });
     }
+
 }
 
 /**
@@ -303,3 +320,5 @@ function removeMeaning(event) {
         });
     }
 }
+
+
