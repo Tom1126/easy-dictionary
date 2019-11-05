@@ -20,8 +20,12 @@
     }
   ],
 
-  "permissions": [
-    "https://www.google.com/"
-  ]
+  "background": {
+    "scripts": ["background.js"]
+  },
 
+  "permissions": [
+    "https://www.google.com/",
+    "contextMenus"
+  ]
 }
