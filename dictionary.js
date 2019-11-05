@@ -1,4 +1,3 @@
-
 document.addEventListener('dblclick', showMeaning);
 document.addEventListener('click', removeMeaning);
 
@@ -16,7 +15,6 @@ function showMeaning(event) {
 
     sendRequest(info); // Send requests to Google to get the meaning and synoymns of the work
     createdDiv = createDiv(info); // Create the popup box for the word the user searched
-    
 }
 
 /**
@@ -57,7 +55,7 @@ function getSelectionInfo(event) {
 }
 
 /**
- * Function to send request to Google to get meaning and synonymns
+ * Function to send request to Google to get meaning and synonyms
  * @param {*} info 
  */
 function sendRequest(info) {
@@ -66,13 +64,13 @@ function sendRequest(info) {
     var xmlHTTP = new XMLHttpRequest();
     xmlHTTP.responseType = 'document';
     xmlHTTP.onload = createCallback(); // Calls the createCallback function when it is loading
-                                       // This callback updates the meaning and synonymns
+                                       // This callback updates the meaning and synonyms
     xmlHTTP.open("GET", url, true); // true for asynchronous request
     xmlHTTP.send();
 }
 
 /**
- * Callback fuction to extract meaning and synonymns from Google's result
+ * Callback fuction to extract meaning and synonyms from Google's result
  */
 function createCallback() {
     var retrieveMeaning = function () {
@@ -102,29 +100,25 @@ function createCallback() {
             audioSrc = audioSrc.src.replace("https://", "http://");
         }
 
-        let synonymnsString = ''; 
-        let synonymns = document.querySelectorAll("div[role='listitem']")
+        let synonymsString = ''; 
+        let synonyms = document.querySelectorAll("div[role='listitem']")
         
-        if(synonymns) {
+        if(synonyms) {
             
-            if(synonymns.length === 0) {
-                synonymnsString = 'No synonymns found.' // Set to no synonyms found when there are no synonymns
+            if(synonyms.length === 0) {
+                synonymsString = 'No synonyms found.' // Set to no synonyms found when there are no synonyms
             }
 
             else {
 
-                const maxLimit = synonymns.length >= 3 ? 3 : synonymns.length;
+                const maxLimit = synonyms.length >= 3 ? 3 : synonyms.length;
 
                 for(let i = 0; i < maxLimit; i++) {
                     
-                    // Gets up to a maximum number of 3 synonymns and add it to string
-                    synonymnsString = synonymnsString + synonymns[i].firstChild.innerText + '; '
-                
+                    // Gets up to a maximum number of 3 synonyms and add it to string
+                    synonymsString = synonymsString + synonyms[i].firstChild.innerText + '; '
                 }
-
             }
-            
-
         }
         
         // Calls the appendToDiv function to update the results
@@ -132,7 +126,7 @@ function createCallback() {
             word: word,
             meaning: meaning,
             audioSrc: audioSrc,
-            synonymnsString: synonymnsString
+            synonymsString: synonymsString
         });
 
     };
@@ -208,15 +202,15 @@ function createDiv(info) {
     synoWrapper.className = "syno-wrapper"
     synoWrapper.style = "background: #f0f0f0; border-radius: 7px;"
 
-    const synonymnsHeader = document.createElement('p')
-    synonymnsHeader.id = "syno-header";
-    synonymnsHeader.style = "padding-left: 5px; margin-block-end: 0px; display:inline-block; font-weight: bold;";
-    synonymnsHeader.textContent = "Synonymns";
+    const synonymsHeader = document.createElement('p')
+    synonymsHeader.id = "syno-header";
+    synonymsHeader.style = "padding-left: 5px; margin-block-end: 0px; display:inline-block; font-weight: bold;";
+    synonymsHeader.textContent = "Synonyms";
 
     const lineBreak = document.createElement("br")
 
     const thesaurusTest = document.createElement('p')
-    thesaurusTest.textContent = "Synonymns searching..."
+    thesaurusTest.textContent = "Synonyms searching..."
     thesaurusTest.id = "thesau-content"
     thesaurusTest.style = "padding: 10px 5px; font-size: 12px; margin: 0;";
     
@@ -225,7 +219,7 @@ function createDiv(info) {
     content.appendChild(audio);
     content.appendChild(meaning);
     content.appendChild(synoWrapper);
-    synoWrapper.appendChild(synonymnsHeader);
+    synoWrapper.appendChild(synonymsHeader);
     synoWrapper.appendChild(thesaurusTest);
 
     document.body.appendChild(hostDiv);
@@ -251,7 +245,6 @@ function createDiv(info) {
         audio: audio,
         thesaurusTest: thesaurusTest
     };
-
 }
 
 /**
@@ -278,7 +271,7 @@ function appendToDiv(createdDiv, content) {
     createdDiv.heading.textContent = content.word;
     createdDiv.meaning.textContent = content.meaning;
     createdDiv.moreInfo.textContent = "More »";
-    createdDiv.thesaurusTest.textContent = content.synonymnsString;
+    createdDiv.thesaurusTest.textContent = content.synonymsString;
 
     var heightAfter = popupDiv.clientHeight;
     var difference = heightAfter - heightBefore;
@@ -295,7 +288,6 @@ function appendToDiv(createdDiv, content) {
             sound.play();
         });
     }
-
 }
 
 /**
@@ -305,7 +297,7 @@ function appendToDiv(createdDiv, content) {
 function noMeaningFound(createdDiv) {
     createdDiv.heading.textContent = "Sorry";
     createdDiv.meaning.textContent = "No definition found.";
-    createdDiv.thesaurusTest.textContent = 'No synonymns found.'
+    createdDiv.thesaurusTest.textContent = 'No synonyms found.'
 }
 
 /**
@@ -320,5 +312,3 @@ function removeMeaning(event) {
         });
     }
 }
-
-
