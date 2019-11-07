@@ -1,4 +1,7 @@
-# Dictionary Anywhere
-Dictionary extension that helps you stay focused on what you are reading by eliminating the need to search for meaning, Double-clicking any word will view its definition in a small pop-up bubble. Now you never have to leave what you are reading to search meaning for the words you don't know.
+# Easy Dictionary
 
-Feel free to install extension <a href="https://addons.mozilla.org/en-US/firefox/addon/dictionary-anyvhere/">Dictionary Anywhere</a>, currently available on Mozilla Firefox.
+## About the extension
+A dictionary extension that helps you stay focused on the content you read. This extension searches and views the definition and synonyms of a searched word in a small pop-up bubble. Now you can enjoy reading your favourite content on the Internet and search for the meaning of a word on the same page.
+
+## Main feature
+- **_Find the meanings and synonyms easily_**. Just double click the word or highlight and right click on the word to view the meanings and synonyms of the word. It's that easy.  

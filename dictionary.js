@@ -12,7 +12,7 @@ browser.runtime.onMessage.addListener(function (message, sender, callback) {
 
 /**
  * Function to generate the popup box containing the meaning 
- * @param {*} event Text to capture from user double clicked 
+ * @param {HTMLEvent} event Text to capture from user double clicked 
  */
 function showMeaning(event) {
     var info = getSelectionInfo(event); // Get the text user selected
@@ -36,7 +36,7 @@ function showMeaningContext() {
 
 /**
  * Function to draw the text that the user has double clicked
- * @param {*} event 
+ * @param {HTMLEvent} event 
  */
 function getSelectionInfo(event) {
     var word;
@@ -71,6 +71,9 @@ function getSelectionInfo(event) {
     return toReturn;
 }
 
+/**
+ * Function to get information needed for the creation of the pop up box
+ */
 function getSelectionInfoContext() {
     var word;
     var boundingRect;
@@ -153,6 +156,7 @@ function createCallback() {
 
         let synonymsString = ''; 
         let synonyms = document.querySelectorAll("div[role='listitem']")
+        // Find for synonyms for the word
         
         if(synonyms) {
             
@@ -272,6 +276,7 @@ function createDiv(info) {
     content.appendChild(synoWrapper);
     synoWrapper.appendChild(synonymsHeader);
     synoWrapper.appendChild(thesaurusTest);
+    //Add all details such as meaning and synonyms of the word to the pop up box
 
     document.body.appendChild(hostDiv);
 
@@ -298,6 +303,10 @@ function createDiv(info) {
     };
 }
 
+/**
+ * Function to create context menu for the dictionary 
+ * @param {Object} info 
+ */
 function createDivContext(info) {
 
     var hostDiv = document.createElement("div");
@@ -310,7 +319,6 @@ function createDivContext(info) {
 
     var shadow = hostDiv.shadowRoot;
     var style = document.createElement("style");
-    //style.textContent = "*{ all: initial}";
     style.textContent = ".mwe-popups{background:#fff;position:absolute;z-index:110;-webkit-box-shadow:0 30px 90px -20px rgba(0,0,0,0.3),0 0 1px #a2a9b1;box-shadow:0 30px 90px -20px rgba(0,0,0,0.3),0 0 1px #a2a9b1;padding:0;font-size:14px;min-width:300px;border-radius:2px}.mwe-popups.mwe-popups-is-not-tall{width:320px}.mwe-popups .mwe-popups-container{color:#222;margin-top:-9px;padding-top:9px;text-decoration:none}.mwe-popups.mwe-popups-is-not-tall .mwe-popups-extract{min-height:40px;max-height:140px;overflow:hidden;margin-bottom:47px;padding-bottom:0}.mwe-popups .mwe-popups-extract{margin:16px;display:block;color:#222;text-decoration:none;position:relative} .mwe-popups.flipped_y:before{content:'';position:absolute;border:8px solid transparent;border-bottom:0;border-top: 8px solid #a2a9b1;bottom:-8px;left:10px}.mwe-popups.flipped_y:after{content:'';position:absolute;border:11px solid transparent;border-bottom:0;border-top:11px solid #fff;bottom:-7px;left:7px} .mwe-popups.mwe-popups-no-image-tri:before{content:'';position:absolute;border:8px solid transparent;border-top:0;border-bottom: 8px solid #a2a9b1;top:-8px;left:10px}.mwe-popups.mwe-popups-no-image-tri:after{content:'';position:absolute;border:11px solid transparent;border-top:0;border-bottom:11px solid #fff;top:-7px;left:7px} .audio{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAcUlEQVQ4y2P4//8/AyUYQhAH3gNxA7IAIQPmo/H3g/QA8XkgFiBkwHyoYnRQABVfj88AmGZcTuuHyjlgMwBZM7IE3NlQGhQe65EN+I8Dw8MLGgYoFpFqADK/YUAMwOsFigORatFIlYRElaRMWmaiBAMAp0n+3U0kqkAAAAAASUVORK5CYII=);background-position: center;background-repeat: no-repeat;cursor:pointer;margin-left: 8px;opacity: 0.5; width: 16px; display: inline-block;} .audio:hover {opacity: 1;}";
     shadow.appendChild(style);
 
@@ -382,6 +390,7 @@ function createDivContext(info) {
     content.appendChild(synoWrapper);
     synoWrapper.appendChild(synonymsHeader);
     synoWrapper.appendChild(thesaurusTest);
+    //Add all details such as meaning and synonyms of the word to the pop up box
 
     document.body.appendChild(hostDiv);
 
@@ -406,6 +415,7 @@ function createDivContext(info) {
         audio: audio,
         thesaurusTest: thesaurusTest
     };
+
 }
 
 /**
@@ -433,6 +443,7 @@ function appendToDiv(createdDiv, content) {
     createdDiv.meaning.textContent = content.meaning;
     createdDiv.moreInfo.textContent = "More »";
     createdDiv.thesaurusTest.textContent = content.synonymsString;
+    // Update the placeholder text to the meaning and synonyms of the word
 
     var heightAfter = popupDiv.clientHeight;
     var difference = heightAfter - heightBefore;
@@ -453,7 +464,7 @@ function appendToDiv(createdDiv, content) {
 
 /**
  * Function to show the no meaning found message
- * @param {*} createdDiv 
+ * @param {HTMLElement} createdDiv The pop up box containing the details of the word 
  */
 function noMeaningFound(createdDiv) {
     createdDiv.heading.textContent = "Sorry";

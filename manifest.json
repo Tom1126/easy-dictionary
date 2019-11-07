@@ -1,11 +1,9 @@
 {
-  "author": "Suraj Jain",
+  "manifest_version": 1,
+  "name": "Easy Dictionary",
+  "version": "1.0.0",
 
-  "manifest_version": 2,
-  "name": "Dictionary Anywhere",
-  "version": "0.8.5",
-
-  "description": "View definitions easily as you browse the web. Double-click any word to view its definition in a small pop-up bubble.",
+  "description": "Easily search for definitions and synonyms for words as you browse the web. Double click the word or highlight the word and right click to get started.",
 
   "icons": {
     "48": "icons/Dictionary-48.png",
